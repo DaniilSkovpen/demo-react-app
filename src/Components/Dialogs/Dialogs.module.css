@@ -1,0 +1,54 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    color: brown;
+}
+
+.dialog a {
+    text-decoration: none;
+    color: antiquewhite;
+}
+.dialog a.active {
+    color: gold;
+   
+}
+
+.dialogsItems {
+    padding: 15px;
+}
+.messages {
+    padding: 15px;
+}
+
+/* CSS */
+.button {
+    background-color: initial;
+    background-image: linear-gradient(-180deg, #ddf509, #33e40b);
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: #0e4734;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+    height: 35px;
+    line-height: 35px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 100%;
+    z-index: 9;
+    border: 0;
+    transition: box-shadow .2s;
+}
+
+.button:hover {
+    box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+}

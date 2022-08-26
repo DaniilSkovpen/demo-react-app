@@ -6,6 +6,7 @@ import News from "./Components/News/News";
 import Settings from "./Components/Settings/Settings";
 import Friends from "./Components/Friends/Friends";
 import UsersContainer from "./Components/Users/UsersContainer";
+import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/Login";
 import { Component, Suspense } from "react";
@@ -17,14 +18,15 @@ import Preloader from "./Components/common/Preloader/Preloader";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./Redux/redux-store";
-import React from "react";
+import React, {StrictMode} from "react";
+import ProfileContainer from "./Components/Profile/ProfileContainer";
 
-const DialogsContainer = React.lazy(() =>
-  import("./Components/Dialogs/DialogsContainer")
-);
-const ProfileContainer = React.lazy(() =>
-  import("./Components/Profile/ProfileContainer")
-);
+// const DialogsContainer = React.lazy(() =>
+//   import("./Components/Dialogs/DialogsContainer")
+// );
+// const ProfileContainer = React.lazy(() =>
+//   import("./Components/Profile/ProfileContainer")
+// );
 
 function withRouter(Children) {
   return (props) => {
@@ -50,21 +52,11 @@ class App extends Component {
 
             <Route
               path="/profile/"
-              element={
-                <Suspense fallback={<div>Loading...</div>}>
-                  <ProfileContainer />
-                </Suspense>
-              }
-            />
+              element={<ProfileContainer />}/>
 
             <Route
               path="/dialogs/*"
-              element={
-                <Suspense fallback={<div>Loading...</div>}>
-                  <DialogsContainer />
-                </Suspense>
-              }
-            />
+              element={<DialogsContainer />}/>
 
             <Route path="/news" element={<News />} />
 
@@ -96,11 +88,11 @@ let AppContainer = compose(
 const DanteusJSApp = (props) => {
   return (
     <BrowserRouter>
-      <React.StrictMode>
+      <StrictMode>
           <Provider store={store}>
             <AppContainer />
           </Provider>
-      </React.StrictMode>
+      </StrictMode>
     </BrowserRouter>
   );
 };

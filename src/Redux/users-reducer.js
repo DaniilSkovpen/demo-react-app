@@ -2,7 +2,7 @@ import { UsersAPI } from "../api/api";
 import { updateObjectInArray } from "../Utils/objects-helper";
 
 const FOLLOW = "FOLLOW";
-const UNFOLLOW = "UNFOLLOW";
+const UNFOLLOW = "UN_FOLLOW";
 const SET_USERS = "SET-USERS";
 const SET_CURRENT_PAGE = "SEt-CURRENT-PAGE";
 const SET_USERS_TOTAL_COUNT = "SET-USERS-TOTAL-COUNT";
@@ -92,21 +92,31 @@ export const getUsers = (currentPage, pageSize) => async (dispatch) => {
   dispatch(setCurrentPage(currentPage));
 };
 
-const followUnfollowFlow = async (dispatch, Id, apiMethod, actionCreator) => {
+const followUnFollowFlow = async (dispatch, Id, apiMethod, actionCreator) => {
   dispatch(toggleFollowingProgress(true, Id));
   let data = await apiMethod(Id);
   if (data.resultCode === 0) {
     dispatch(actionCreator(Id));
   }
   dispatch(toggleFollowingProgress(false, Id));
-};
+}
 
 export const Follow = (Id) => async (dispatch) => {
-    followUnfollowFlow(dispatch, Id, UsersAPI.Follow.bind(UsersAPI), followSuccess);
+    followUnFollowFlow(
+      dispatch,
+      Id,
+      UsersAPI.Follow.bind(UsersAPI),
+      followSuccess
+    );
 };
 
 export const unFollow = (Id) => async (dispatch) => {
-    followUnfollowFlow(dispatch, Id, UsersAPI.UnFollow.bind(UsersAPI), unFollowSuccess);
+    followUnFollowFlow(
+      dispatch,
+      Id,
+      UsersAPI.UnFollow.bind(UsersAPI),
+      unFollowSuccess
+    );
 };
 
 export default usersReducer;

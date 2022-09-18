@@ -1,7 +1,8 @@
 const Music = (props) => {
     return (
         <div>
-           Hollywood Undead
+            <h1>Some Music</h1>
+           <div>Music List</div>
         </div>
     );
 }

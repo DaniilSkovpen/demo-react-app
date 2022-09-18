@@ -1,7 +1,9 @@
 const Settings = (props) => {
     return (
         <div>
-            Settings
+            <h1>Settings</h1>
+            <h3>Personal Settings</h3>
+            <div>Account Settings</div> 
         </div>
     );
 }

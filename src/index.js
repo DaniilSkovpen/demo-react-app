@@ -1,9 +1,11 @@
 import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import DanteusJSApp from "./App";
+import ReactJSApp from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(
-        <DanteusJSApp />
-);
+      <React.StrictMode>
+        <ReactJSApp />
+      </React.StrictMode>
+    );

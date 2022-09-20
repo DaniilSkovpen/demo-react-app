@@ -4,12 +4,11 @@ import { Routes, Route } from "react-router-dom";
 import Music from "./Components/Music/Music";
 import News from "./Components/News/News";
 import Settings from "./Components/Settings/Settings";
-import Friends from "./Components/Friends/Friends";
 import UsersContainer from "./Components/Users/UsersContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/Login";
-import { Component, Suspense } from "react";
+import { Component } from "react";
 import { initializeApp } from "./Redux/app-reducer";
 import { connect } from "react-redux";
 import { compose } from "redux";
@@ -18,7 +17,7 @@ import Preloader from "./Components/common/Preloader/Preloader";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./Redux/redux-store";
-import React, {StrictMode} from "react";
+import React from "react";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
 
 // const DialogsContainer = React.lazy(() =>
@@ -40,7 +39,7 @@ class App extends Component {
     this.props.initializeApp();
   }
   render() {
-    if (!this.props.initialized) return <Preloader />;
+    // if (!this.props.initialized) return <Preloader />;
 
     return (
       <div className="app-wrapper">
@@ -66,8 +65,6 @@ class App extends Component {
 
             <Route path="/users" element={<UsersContainer />} />
 
-            <Route path="/friends" element={<Friends />} />
-
             <Route path="/login" element={<Login />} />
           </Routes>
         </div>
@@ -85,16 +82,14 @@ let AppContainer = compose(
   withRouter
 )(App);
 
-const DanteusJSApp = (props) => {
+const ReactJSApp = (props) => {
   return (
     <BrowserRouter>
-      <StrictMode>
-          <Provider store={store}>
-            <AppContainer />
-          </Provider>
-      </StrictMode>
+        <Provider store={store}>
+          <AppContainer />
+        </Provider>
     </BrowserRouter>
   );
 };
 
-export default DanteusJSApp;
+export default ReactJSApp;

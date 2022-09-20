@@ -36,7 +36,7 @@ function withRouter(Children) {
 
 class App extends Component {
   componentDidMount() {
-    this.props.initializeApp();
+    //this.props.initializeApp();
   }
   render() {
     // if (!this.props.initialized) return <Preloader />;

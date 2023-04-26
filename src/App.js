@@ -13,7 +13,6 @@ import { initializeApp } from "./Redux/app-reducer";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { useParams } from "react-router-dom";
-import Preloader from "./Components/common/Preloader/Preloader";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./Redux/redux-store";
